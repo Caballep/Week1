@@ -1,5 +1,7 @@
 package com.example.caballjo.javareview;
 
+//The proof I did try so many things is all the packages I ended not using:
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -18,9 +20,10 @@ public class CodingReview {
 
         String newline = System.getProperty("line.separator");
 
+        //////////////////////////////////////////////////////////////////
         System.out.println(newline + "First Problem: " + newline);
 
-        List<String> names = new ArrayList<String>();
+        List<String> names = new ArrayList<>();
         names.add("Object1");
         names.add("Object1");
         names.add("Object1");
@@ -33,6 +36,7 @@ public class CodingReview {
 
         FindDuplicates(names);
 
+        //////////////////////////////////////////////////////////////////
         System.out.println(newline + "Second Problem" + newline);
 
         String possiblePalindrome1 = "ABCDEEDCBA"; //Pair palindrome
@@ -43,6 +47,7 @@ public class CodingReview {
         IsAPalindrome(possiblePalindrome2);
         IsAPalindrome(possiblePalindrome3);
 
+        //////////////////////////////////////////////////////////////////
         System.out.println(newline + "Third Problem" + newline);
 
         DivisibleHelper(18); //fizz
@@ -50,6 +55,7 @@ public class CodingReview {
         DivisibleHelper(15); //fizz(both)
         DivisibleHelper(17); //print value
 
+        //////////////////////////////////////////////////////////////////
         System.out.println(newline + "Fourth Problem" + newline);
 
         String word1A = "ABCD", word1B = "BCDA";
@@ -58,6 +64,7 @@ public class CodingReview {
         AreAnagrams(word1A, word1B);
         AreAnagrams(word2A, word2B);
 
+        //////////////////////////////////////////////////////////////////
         System.out.println(newline + "Fifth Problem" + newline);
 
         MultiplicationTable();
@@ -66,8 +73,8 @@ public class CodingReview {
     //Problem 1
     private static void FindDuplicates(List<String> items){
 
-        final Set<String> result = new HashSet();
-        final Set<String> set = new HashSet();
+        Set<String> result = new HashSet<>();
+        Set<String> set = new HashSet<>();
 
         for (String value : items)
         {
@@ -118,35 +125,16 @@ public class CodingReview {
     //Problem 4
     private static void AreAnagrams(String word1, String word2){
 
-        //Represents a Map of the characters and count of word1 and word2
-        HashMap<Character, Integer> map1 = new HashMap<>();
-        HashMap<Character, Integer> map2 = new HashMap<>();
+        char[] letters1 = word1.toCharArray();
+        char[] letters2 = word2.toCharArray();
 
-        List<Character> letters1 = new ArrayList<>();
-        List<Character> letters2 = new ArrayList<>();
+        Arrays.sort(letters1);
+        Arrays.sort(letters2);
 
-        //Building a list with all the characters that belongs to word1, also the count per each one of them
-        for (int i = 0; i < word1.length(); i++){
-            letters1.add(word1.charAt(i));
-        }
-
-        for (char letter : letters1){
-            map1.put(letter, Collections.frequency(letters1, letter));
-        }
-
-        //Building the one that stands for the word2
-        for (int i = 0; i < word1.length(); i++){
-            letters2.add(word1.charAt(i));
-        }
-
-        for (char letter : letters1){
-            map2.put(letter, Collections.frequency(letters2, letter));
-        }
-
-        if(map1.equals(map2)){
+        if(Arrays.equals(letters1, letters2)){
             System.out.println("It is an Anagram");
         }else{
-            System.out.println("Sorry, that is not an Anagram");
+            System.out.println("It is not an Anagram");
         }
     }
 
@@ -172,19 +160,3 @@ public class CodingReview {
         }
     }
 }
-
-
-//    Problem 1
-//    Create a function to print the duplicates in a list of strings
-
-
-//    Problem 2
-//    Create function to check if the string is a palindrome
-
-//    Problem 3
-//    Create a function that will print
-//      "fizz" is the number is divisible by 3
-//      "buzz" is the number is divisible by 5
-//      "fizz" is the number is divisible by both
-//      and the integer for the rest
-//     You can use a for loop for using the first 20 integers
